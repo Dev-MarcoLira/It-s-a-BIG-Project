@@ -2,3 +2,4 @@ node_modules/
 *.log
 backend/upload/* 
 !backend/upload/.gitkeep
+.env
