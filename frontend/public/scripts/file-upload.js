@@ -1,5 +1,5 @@
 let bytesAmount = 0
-const API_URL = 'http://localhost:3030'
+const API_URL = 'http://localhost:3030/upload'
 const ON_UPLOAD_EVENT = 'file-uploaded'
 
 const formatBytes = (bytes, decimals = 2) => {
