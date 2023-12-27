@@ -3,10 +3,10 @@ const { createServer } = require('http')
 const express = require('express')
 const server = express()
 const socketIo = require('socket.io')
+const cors = require('cors')
 
 const UploadRoutes = require('./routes/uploadRoutes')
 const UserRoutes = require('./routes/userRoutes')
-const url = require('url')
 
 const io = socketIo(createServer(server), {
     cors: {
@@ -17,6 +17,8 @@ const io = socketIo(createServer(server), {
 
 io.on('connection', socket => console.log(`Someone connected: ${socket.id}`))
 
+server.use(cors())
+server.use(express.json())
 server.use(UploadRoutes)
 server.use(UserRoutes)
 

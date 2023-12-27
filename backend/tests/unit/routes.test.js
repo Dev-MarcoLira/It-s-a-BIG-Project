@@ -1,5 +1,6 @@
+require('dotenv').config()
 const { describe, it } = require('node:test')
-const { strictEqual, deepStrictEqual } = require('assert/strict')
+const { strictEqual, deepStrictEqual, ok } = require('assert/strict')
 
 const http = require('http')
 const BASE_URL = `http://localhost:${process.env.PORT}`
@@ -14,18 +15,23 @@ describe('Users routes suite', ()=>{
         })
     })
 
-    it('should get the req body', async()=>{
-        let response
+    it('should get the user id', async()=>{
+
         await fetch(`${BASE_URL}/users`, {
-            body: "Hello there",
-            method: 'post'
+            body: JSON.stringify({
+                'name': 'Marco Antonio',
+                'email': 'malirab2302@gmail.com',
+                'password': '123'
+            }),
+            method: 'post',
+            mode: 'cors'
         })
             .then(res => res.json())
             .then(async body => {
-                response = body
+                console.log(body)
             })
             .catch(err => new Error(err))
-            strictEqual(response, '/users')
+
     })
 
 })

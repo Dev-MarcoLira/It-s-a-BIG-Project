@@ -7,6 +7,10 @@ router.get('/users', (req, res)=>{
 
 })
 
+router.get('/users/:id', ()=>{})
+
+router.post('/users/login', UserController.login)
+
 router.post('/users', UserController.post)
 
 module.exports = router
