@@ -4,7 +4,7 @@ const sequelize = require('../config/sequelize');
 const User = sequelize.define('User', {
     id: {
         primaryKey: true,
-        type: DataTypes.INTEGER
+        type: DataTypes.UUID
     },
     name: {
         type: DataTypes.STRING,
@@ -23,7 +23,7 @@ const User = sequelize.define('User', {
         type: DataTypes.DATE,
         defaultValue: new Date()
     },
-    modifiedAt: {
+    updatedAt: {
         type: DataTypes.DATE,
         defaultValue: new Date(),
         onUpdate: new Date()        

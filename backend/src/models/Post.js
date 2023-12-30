@@ -3,9 +3,17 @@ const sequelize = require('../config/sequelize');
 
 const Post = sequelize.define('Post', {
   id: {
-    type: DataTypes.INTEGER,
+    type: DataTypes.UUID,
     primaryKey: true,
-    autoIncrement: true,
+  },
+  userId: {
+    type: DataTypes.UUID,
+    references: {
+      model: 'Users',
+      key: 'id',
+    },
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
   },
   title: {
     type: DataTypes.STRING,
@@ -19,7 +27,7 @@ const Post = sequelize.define('Post', {
       type: DataTypes.DATE,
       defaultValue: new Date()
   },
-  modifiedAt: {
+  updatedAt: {
       type: DataTypes.DATE,
       defaultValue: new Date(),
       onUpdate: new Date()        
